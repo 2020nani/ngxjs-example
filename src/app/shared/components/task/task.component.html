@@ -1,0 +1,22 @@
+<div>
+  <h2>Todo List</h2>
+  <input
+    type="text"
+    [(ngModel)]="newTask"
+    placeholder="Add a new task"
+  />
+  <button (click)="addTask()">Add</button>
+
+  <ul>
+    <li *ngFor="let todo of tasks$ | async">
+      <span
+        [style.textDecoration]="todo.completed ? 'line-through' : 'none'"
+        (click)="toggleTask(todo.id)"
+        style="cursor: pointer;"
+      >
+        {{ todo.task }}
+      </span>
+      <button (click)="deleteTask(todo.id)">Delete</button>
+    </li>
+  </ul>
+</div>
